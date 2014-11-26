@@ -1,0 +1,255 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		40BEF9451A25A64F00409D5F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BEF9441A25A64F00409D5F /* OpenGL.framework */; };
+		40BEF9471A25A65700409D5F /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BEF9461A25A65700409D5F /* GLUT.framework */; };
+		40BEF9491A25A6DE00409D5F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40BEF9481A25A6DE00409D5F /* main.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		40BEF9321A25A5FD00409D5F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		40BEF9341A25A5FD00409D5F /* FlyingHelicopter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FlyingHelicopter; sourceTree = BUILT_PRODUCTS_DIR; };
+		40BEF9401A25A63800409D5F /* texture1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = texture1.bmp; path = FlyingHelicopter/texture1.bmp; sourceTree = "<group>"; };
+		40BEF9411A25A63800409D5F /* texture2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = texture2.bmp; path = FlyingHelicopter/texture2.bmp; sourceTree = "<group>"; };
+		40BEF9421A25A63800409D5F /* texture4.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = texture4.bmp; path = FlyingHelicopter/texture4.bmp; sourceTree = "<group>"; };
+		40BEF9431A25A63800409D5F /* texture3.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = texture3.bmp; path = FlyingHelicopter/texture3.bmp; sourceTree = "<group>"; };
+		40BEF9441A25A64F00409D5F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		40BEF9461A25A65700409D5F /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		40BEF9481A25A6DE00409D5F /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		40BEF9311A25A5FD00409D5F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40BEF9471A25A65700409D5F /* GLUT.framework in Frameworks */,
+				40BEF9451A25A64F00409D5F /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		40BEF92B1A25A5FD00409D5F = {
+			isa = PBXGroup;
+			children = (
+				40BEF9401A25A63800409D5F /* texture1.bmp */,
+				40BEF9411A25A63800409D5F /* texture2.bmp */,
+				40BEF9421A25A63800409D5F /* texture4.bmp */,
+				40BEF9431A25A63800409D5F /* texture3.bmp */,
+				40BEF9461A25A65700409D5F /* GLUT.framework */,
+				40BEF9441A25A64F00409D5F /* OpenGL.framework */,
+				40BEF9361A25A5FD00409D5F /* FlyingHelicopter */,
+				40BEF9351A25A5FD00409D5F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		40BEF9351A25A5FD00409D5F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				40BEF9341A25A5FD00409D5F /* FlyingHelicopter */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		40BEF9361A25A5FD00409D5F /* FlyingHelicopter */ = {
+			isa = PBXGroup;
+			children = (
+				40BEF9481A25A6DE00409D5F /* main.cpp */,
+			);
+			path = FlyingHelicopter;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		40BEF9331A25A5FD00409D5F /* FlyingHelicopter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40BEF93B1A25A5FD00409D5F /* Build configuration list for PBXNativeTarget "FlyingHelicopter" */;
+			buildPhases = (
+				40BEF9301A25A5FD00409D5F /* Sources */,
+				40BEF9311A25A5FD00409D5F /* Frameworks */,
+				40BEF9321A25A5FD00409D5F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlyingHelicopter;
+			productName = FlyingHelicopter;
+			productReference = 40BEF9341A25A5FD00409D5F /* FlyingHelicopter */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		40BEF92C1A25A5FD00409D5F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = comp371;
+				TargetAttributes = {
+					40BEF9331A25A5FD00409D5F = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 40BEF92F1A25A5FD00409D5F /* Build configuration list for PBXProject "FlyingHelicopter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 40BEF92B1A25A5FD00409D5F;
+			productRefGroup = 40BEF9351A25A5FD00409D5F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				40BEF9331A25A5FD00409D5F /* FlyingHelicopter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		40BEF9301A25A5FD00409D5F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40BEF9491A25A6DE00409D5F /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		40BEF9391A25A5FD00409D5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		40BEF93A1A25A5FD00409D5F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		40BEF93C1A25A5FD00409D5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		40BEF93D1A25A5FD00409D5F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		40BEF92F1A25A5FD00409D5F /* Build configuration list for PBXProject "FlyingHelicopter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40BEF9391A25A5FD00409D5F /* Debug */,
+				40BEF93A1A25A5FD00409D5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40BEF93B1A25A5FD00409D5F /* Build configuration list for PBXNativeTarget "FlyingHelicopter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40BEF93C1A25A5FD00409D5F /* Debug */,
+				40BEF93D1A25A5FD00409D5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 40BEF92C1A25A5FD00409D5F /* Project object */;
+}
