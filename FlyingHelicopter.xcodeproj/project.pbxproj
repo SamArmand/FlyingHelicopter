@@ -26,10 +26,6 @@
 
 /* Begin PBXFileReference section */
 		40BEF9341A25A5FD00409D5F /* FlyingHelicopter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FlyingHelicopter; sourceTree = BUILT_PRODUCTS_DIR; };
-		40BEF9401A25A63800409D5F /* texture1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = texture1.bmp; path = FlyingHelicopter/texture1.bmp; sourceTree = "<group>"; };
-		40BEF9411A25A63800409D5F /* texture2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = texture2.bmp; path = FlyingHelicopter/texture2.bmp; sourceTree = "<group>"; };
-		40BEF9421A25A63800409D5F /* texture4.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = texture4.bmp; path = FlyingHelicopter/texture4.bmp; sourceTree = "<group>"; };
-		40BEF9431A25A63800409D5F /* texture3.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = texture3.bmp; path = FlyingHelicopter/texture3.bmp; sourceTree = "<group>"; };
 		40BEF9441A25A64F00409D5F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		40BEF9461A25A65700409D5F /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		40BEF9481A25A6DE00409D5F /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -51,10 +47,6 @@
 		40BEF92B1A25A5FD00409D5F = {
 			isa = PBXGroup;
 			children = (
-				40BEF9401A25A63800409D5F /* texture1.bmp */,
-				40BEF9411A25A63800409D5F /* texture2.bmp */,
-				40BEF9421A25A63800409D5F /* texture4.bmp */,
-				40BEF9431A25A63800409D5F /* texture3.bmp */,
 				40BEF9461A25A65700409D5F /* GLUT.framework */,
 				40BEF9441A25A64F00409D5F /* OpenGL.framework */,
 				40BEF9361A25A5FD00409D5F /* FlyingHelicopter */,
@@ -248,6 +240,7 @@
 				40BEF93D1A25A5FD00409D5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

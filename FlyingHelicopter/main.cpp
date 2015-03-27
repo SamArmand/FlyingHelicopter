@@ -96,11 +96,6 @@ float pz;
 bool lightingEnabled = true;
 bool thirdPersonLight = true;
 
-GLuint texture1;
-GLuint texture2;
-GLuint texture3;
-GLuint texture4;
-
 bool shine = true;
 
 bool circleLight = true;
@@ -420,10 +415,6 @@ void drawBody(void) {
 }
 
 void drawCockpit(void) {
-    glEnable( GL_TEXTURE_2D );
-    glEnable(GL_TEXTURE_GEN_S); //enable texture coordinate generation
-    glEnable(GL_TEXTURE_GEN_T);
-    glBindTexture(GL_TEXTURE_2D, texture4);
     
     //Cockpit Windshield
     glColor3f(0.0f, 0.0f, 1.0f);
@@ -432,16 +423,6 @@ void drawCockpit(void) {
     glTranslatef(0.0f, 0.0f, 6.0f);
     glutSolidSphere(3, 100, 100);
     glPopMatrix();
-    
-    glDisable(GL_TEXTURE_GEN_S); //enable texture coordinate generation
-    glDisable(GL_TEXTURE_GEN_T);
-    glDisable(GL_TEXTURE_2D);
-    
-    
-    glEnable( GL_TEXTURE_2D );
-    glEnable(GL_TEXTURE_GEN_S); //enable texture coordinate generation
-    glEnable(GL_TEXTURE_GEN_T);
-    glBindTexture(GL_TEXTURE_2D, texture1);
     
     //Cockpit Base
     glColor3f(0.33f, 0.42f, 0.18f);
@@ -504,11 +485,6 @@ void drawHelicopter(void) {
     
     glClearColor(0.49f, 0.75f, 0.93f, 1.0f);
     
-    glEnable( GL_TEXTURE_2D );
-    glEnable(GL_TEXTURE_GEN_S); //enable texture coordinate generation
-    glEnable(GL_TEXTURE_GEN_T);
-    glBindTexture(GL_TEXTURE_2D, texture1);
-    
     drawBody();
     
     //Tail
@@ -528,16 +504,7 @@ void drawHelicopter(void) {
     glutSolidSphere(3, 100, 100);
     glPopMatrix();
     
-    glDisable(GL_TEXTURE_GEN_S); //enable texture coordinate generation
-    glDisable(GL_TEXTURE_GEN_T);
-    glDisable(GL_TEXTURE_2D);
-    
     drawCockpit();
-    
-    glEnable( GL_TEXTURE_2D );
-    glEnable(GL_TEXTURE_GEN_S); //enable texture coordinate generation
-    glEnable(GL_TEXTURE_GEN_T);
-    glBindTexture(GL_TEXTURE_2D, texture1);
     
     glColor3f(0.50f, 0.50f, 0.50f);
     //Front Left Leg
@@ -592,15 +559,6 @@ void drawHelicopter(void) {
     glutSolidCube(1.0f);
     glPopMatrix();
     
-    glDisable(GL_TEXTURE_GEN_S); //enable texture coordinate generation
-    glDisable(GL_TEXTURE_GEN_T);
-    glDisable(GL_TEXTURE_2D);
-    
-    glEnable( GL_TEXTURE_2D );
-    glEnable(GL_TEXTURE_GEN_S); //enable texture coordinate generation
-    glEnable(GL_TEXTURE_GEN_T);
-    glBindTexture(GL_TEXTURE_2D, texture1);
-    
     glColor3f(0.33f, 0.42f, 0.18f);
     //Tail Fin
     glPushMatrix();
@@ -609,17 +567,8 @@ void drawHelicopter(void) {
     glutSolidCube(1.0f);
     glPopMatrix();
     
-    glDisable(GL_TEXTURE_GEN_S); //enable texture coordinate generation
-    glDisable(GL_TEXTURE_GEN_T);
-    glDisable(GL_TEXTURE_2D);
-    
     /*Rotors drawn in separate methods in case we want to rotate them at some point.
      It would be easier to modify the code that way. */
-    
-    glEnable( GL_TEXTURE_2D );
-    glEnable(GL_TEXTURE_GEN_S); //enable texture coordinate generation
-    glEnable(GL_TEXTURE_GEN_T);
-    glBindTexture(GL_TEXTURE_2D, texture3);
     
     // Draw top rotor
     glColor3f(0.50f, 0.50f, 0.50f);
@@ -650,15 +599,6 @@ void drawHelicopter(void) {
     drawBlade();
     glPopMatrix();
     
-    glDisable(GL_TEXTURE_GEN_S); //enable texture coordinate generation
-    glDisable(GL_TEXTURE_GEN_T);
-    glDisable(GL_TEXTURE_2D);
-    
-    glEnable( GL_TEXTURE_2D );
-    glEnable(GL_TEXTURE_GEN_S); //enable texture coordinate generation
-    glEnable(GL_TEXTURE_GEN_T);
-    glBindTexture(GL_TEXTURE_2D, texture1);
-    
     glColor3f(0.24f, 0.32f, 0.16f);
     //Left Wing
     glPushMatrix();
@@ -683,15 +623,6 @@ void drawHelicopter(void) {
     glutSolidCube(4.0f);
     glPopMatrix();
     
-    glDisable(GL_TEXTURE_GEN_S); //enable texture coordinate generation
-    glDisable(GL_TEXTURE_GEN_T);
-    glDisable(GL_TEXTURE_2D);
-    
-    glEnable( GL_TEXTURE_2D );
-    glEnable(GL_TEXTURE_GEN_S); //enable texture coordinate generation
-    glEnable(GL_TEXTURE_GEN_T);
-    glBindTexture(GL_TEXTURE_2D, texture3);
-    
     glColor3f(0.50f, 0.50f, 0.50f);
     //Missile Launcher Left
     glPushMatrix();
@@ -708,10 +639,6 @@ void drawHelicopter(void) {
     gluCylinder(obj, 1, 1, 6, 100, 100);
     glEnd();
     glPopMatrix();
-    
-    glDisable(GL_TEXTURE_GEN_S); //enable texture coordinate generation
-    glDisable(GL_TEXTURE_GEN_T);
-    glDisable(GL_TEXTURE_2D);
     
     glColor3f(0.25f, 0.25f, 0.25f);
     //Left Side Missile Head
@@ -1322,11 +1249,6 @@ int main(int argc, char **argv) {
     glutKeyboardFunc(keyboard);
     glutSpecialFunc(specialKeyboard);
     glutIdleFunc(renderScene);
-    
-    texture1 = LoadTexture("/Users/SamArmand/Development/FlyingHelicopter/FlyingHelicopter/texture1.bmp");
-    texture2 = LoadTexture("/Users/SamArmand/Development/FlyingHelicopter/FlyingHelicopter/texture2.bmp");
-    texture3 = LoadTexture("/Users/SamArmand/Development/FlyingHelicopter/FlyingHelicopter/texture3.bmp");
-    texture4 = LoadTexture("/Users/SamArmand/Development/FlyingHelicopter/FlyingHelicopter/texture4.bmp");
     
     moveCamera();
     // enter GLUT event processing cycle
