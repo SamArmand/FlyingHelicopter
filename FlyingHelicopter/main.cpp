@@ -28,7 +28,6 @@ float zoom = 1.0f;
 enum PolygonMode {WIREFRAME, SHADED};
 enum ViewMode {PERSPECTIVE, ORTHOGRAPHIC};
 
-
 PolygonMode polygonMode = SHADED;
 ViewMode viewMode = PERSPECTIVE;
 
@@ -112,11 +111,9 @@ void setView(int w, int h) {
     
     ratio =  w * 1.0 / h;
     
-
 }
 
-GLuint LoadTexture( const char * filename )
-{
+GLuint LoadTexture( const char * filename ) {
     
     GLuint texture;
     
@@ -129,15 +126,16 @@ GLuint LoadTexture( const char * filename )
     file = fopen( filename, "rb" );
     
     if ( file == NULL ) return 0;
+    
     width = 1024;
     height = 512;
     data = (unsigned char *)malloc( width * height * 3 );
-    //int size = fseek(file,);
+    
     fread( data, width * height * 3, 1, file );
     fclose( file );
     
-    for(int i = 0; i < width * height ; ++i)
-    {
+    for (int i = 0; i < width * height ; ++i) {
+        
         int index = i*3;
         unsigned char B,R;
         B = data[index];
@@ -147,7 +145,6 @@ GLuint LoadTexture( const char * filename )
         data[index+2] = B;
         
     }
-    
     
     glGenTextures( 1, &texture );
     glBindTexture( GL_TEXTURE_2D, texture );
@@ -163,6 +160,7 @@ GLuint LoadTexture( const char * filename )
     free( data );
     
     return texture;
+    
 }
 
 void setSunlight(){
@@ -170,56 +168,60 @@ void setSunlight(){
     glEnable(GL_LIGHT0);    // using light 0
     glShadeModel(GL_SMOOTH); // smooth out lighting
     glEnable(GL_NORMALIZE);  // normalize lighting
-    glEnable(GL_COLOR_MATERIAL);  // keeps some of orginal colors
+    glEnable(GL_COLOR_MATERIAL);  // keeps some of original colors
     
-    if (shine == true){
+    if (shine) {
         
         GLfloat specular[] = {0.8,0.8,0.8,1};           // Softer white
-        glLightfv(GL_LIGHT0, GL_SPECULAR, specular);    // brightes part of the light
-        glMaterialfv(GL_FRONT, GL_SPECULAR, specular);  // way it affects the ojects
+        glLightfv(GL_LIGHT0, GL_SPECULAR, specular);    // brightness part of the light
+        glMaterialfv(GL_FRONT, GL_SPECULAR, specular);  // way it affects the objects
         
-        GLfloat ambient[] ={0.25,0.25,0.25,1}; //{ 0.4,0.4,0.4,1 };          // greyish color
+        GLfloat ambient[] ={0.25,0.25,0.25,1}; //{ 0.4,0.4,0.4,1 };          // grayish color
         glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);      // Color given out when there is little to no light
         glMaterialfv(GL_FRONT, GL_AMBIENT, ambient);
         
-        GLfloat diffuse[] = {0.4,0.4,0.4,1 };           // greyish color
+        GLfloat diffuse[] = {0.4,0.4,0.4,1 };           // grayish color
         glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);      // the way the moves form bright to dark ... shaded
         glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
         
         GLfloat shininess = 7.0;                                // How shinny the object looks
         glMaterialf(GL_FRONT, GL_SHININESS, shininess);
         
-    } else if (shine == false){
+    }
+    
+    else {
         
         GLfloat specular[] = {0.1,0.1,0.1,1};           // Softer white
-        glLightfv(GL_LIGHT0, GL_SPECULAR, specular);    // brightes part of the light
-        glMaterialfv(GL_FRONT, GL_SPECULAR, specular);  // way it affects the ojects
+        glLightfv(GL_LIGHT0, GL_SPECULAR, specular);    // brightness part of the light
+        glMaterialfv(GL_FRONT, GL_SPECULAR, specular);  // way it affects the objects
         
-        GLfloat ambient[] = {0.25,0.25,0.25,1};          // greyish color
+        GLfloat ambient[] = {0.25,0.25,0.25,1};          // grayish color
         glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);      // Color given out when there is little to no light
         glMaterialfv(GL_FRONT, GL_AMBIENT, ambient);
         
-        GLfloat diffuse[] = {0.4,0.4,0.4,1 };           // greyish color
+        GLfloat diffuse[] = {0.4,0.4,0.4,1 };           // grayish color
         glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);      // the way the moves form bright to dark ... shaded
         glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
         
         GLfloat shininess = 0;                                // How shinny the object looks
         glMaterialf(GL_FRONT, GL_SHININESS, shininess);
+        
     }
     
-    GLfloat position[] = { 0, 25, 0, 0};           // pointing dowards, along -y axis
+    GLfloat position[] = { 0, 25, 0, 0};           // pointing downward, along -y axis
     glLightfv(GL_LIGHT0, GL_POSITION, position);  //not sure how to stop making move with the camera
     
     float specReflection[] = { 0.3f, 0.3f, 0.3f, 1.0f };    // How bright the white spots are
     glMaterialfv(GL_FRONT, GL_SPECULAR, specReflection);    // How much the object reflects light
+    
 }
 
-void setHeadlight(){
+void setHeadlight() {
+    
     // Turn light 1 on
     glEnable(GL_LIGHT1);
-    // Aspets of light 1
     
-    
+    // Aspects of light 1
     glEnable(GL_NORMALIZE);  // normalize lighting
     glEnable(GL_COLOR_MATERIAL);  // keeps some of orginal colors
     
@@ -239,8 +241,8 @@ void setHeadlight(){
     glLightfv(GL_LIGHT1,GL_AMBIENT, ambient); // color of the reflected light
     glMaterialfv(GL_FRONT, GL_AMBIENT, ambient);
     
-    
-    if (highBeam == true){
+    if (highBeam) {
+        
         GLfloat ltPosition[4] = {0, -3, 6.5, 1.0};
         glLightfv(GL_LIGHT1,GL_POSITION, ltPosition);
         
@@ -251,7 +253,9 @@ void setHeadlight(){
         
         glLightf(GL_LIGHT1, GL_SPOT_EXPONENT,50);
         
-    }else if (highBeam == false){
+    }
+    
+    else {
         
         GLfloat ltPosition[4] = {0, -3, 6.5, 1.0};
         glLightfv(GL_LIGHT1,GL_POSITION, ltPosition);
@@ -268,15 +272,14 @@ void setHeadlight(){
     float specReflection[] = { 0.2f, 0.2f, 0.2f, 1.0f };    // How bright the white spots are
     glMaterialfv(GL_FRONT, GL_SPECULAR, specReflection);    // How much the object reflects light
     
-    
 }
 
-void setCircularLight(){
+void setCircularLight() {
     
     // Turn light 2 on
     glEnable(GL_LIGHT2);
     
-    // Aspets of light 2
+    // Aspects of light 2
     glEnable(GL_NORMALIZE);  // normalize lighting
     glEnable(GL_COLOR_MATERIAL);  // keeps some of orginal colors
     
@@ -292,15 +295,13 @@ void setCircularLight(){
     glLightfv(GL_LIGHT2,GL_AMBIENT, ambient); // color of the reflected light
     glMaterialfv(GL_FRONT, GL_AMBIENT, ambient);
     
-    
     GLfloat ltPosition[] = {px, 15, pz, 1.0};
     glLightfv(GL_LIGHT2,GL_POSITION, ltPosition);
     
     GLfloat ltDirection[] = {0, -1, 0, 0.0};
     glLightfv(GL_LIGHT2,GL_SPOT_DIRECTION, ltDirection); // which way it points
     
-    float ca = 40.0f;
-    glLightf(GL_LIGHT2,GL_SPOT_CUTOFF, ca); // width of the beam
+    glLightf(GL_LIGHT2,GL_SPOT_CUTOFF, 40.0f); // width of the beam
     
     glLightf(GL_LIGHT2, GL_SPOT_EXPONENT,15);
     
@@ -311,28 +312,23 @@ void setCircularLight(){
 
 void moveLight(void) {
     
-    if (circleLightMoving) {
+    if (circleLightMoving)
         roo += speed;
-    }
     
-    if (roo >= 180) {
+    if (roo >= 180)
         roo = -180;
-    }
     
-    float d = (float) 20*( (1 + sin(roo*PI/180)*sin(roo*PI/180)))  ;
-    float c = (float) 20*((cos(roo*PI/180) * (sin(roo*PI/180))) ) ;
-    
-    px=d - 30;
-    pz=c;
+    px = ((float) 20*((1 + sin(roo*PI/180)*sin(roo*PI/180)))) - 30;
+    pz = (float) 20*((cos(roo*PI/180) * (sin(roo*PI/180))));
     
 }
 
-void setThirdPersonLight(){
+void setThirdPersonLight() {
     
     // Turn light 3 on
     glEnable(GL_LIGHT3);
     
-    // Aspets of light 3
+    // Aspects of light 3
     glEnable(GL_NORMALIZE);  // normalize lighting
     glEnable(GL_COLOR_MATERIAL);  // keeps some of orginal colors
     
@@ -351,9 +347,8 @@ void setThirdPersonLight(){
     GLfloat ltPosition[] = {eyeX+curX, eyeY, eyeZ+curZ, 1.0};
     glLightfv(GL_LIGHT3,GL_POSITION, ltPosition);
     
-    float cang = 40.0f;
-    glLightf(GL_LIGHT3,GL_SPOT_CUTOFF, cang); // width of the beam
-    glLightf(GL_LIGHT3, GL_SPOT_EXPONENT,15);
+    glLightf(GL_LIGHT3,GL_SPOT_CUTOFF, 40.0f); // width of the beam
+    glLightf(GL_LIGHT3, GL_SPOT_EXPONENT, 15);
     
     float specReflection[] = { 0.2f, 0.2f, 0.2f, 1.0f };    // How bright the white spots are
     glMaterialfv(GL_FRONT, GL_SPECULAR, specReflection);    // How much the object reflects light
@@ -368,7 +363,6 @@ void drawBody(void) {
     glScalef(1.0f, 1.0f, 2.0f);
     glutSolidCube(6.0f);
     glPopMatrix();
-
     
     //Right Side
     glPushMatrix();
@@ -411,7 +405,7 @@ void drawBody(void) {
     gluCylinder(obj, 1, 1, 12, 100, 100);
     glEnd();
     glPopMatrix();
-
+    
 }
 
 void drawCockpit(void) {
@@ -439,6 +433,7 @@ void drawCockpit(void) {
 }
 
 void drawBlade(void) {
+    
     glPushMatrix();
     glRotatef(10., 0.0, 0.0, 1.0);
     glScalef(0.75, 0.2, 10.0);
@@ -449,9 +444,11 @@ void drawBlade(void) {
     gluDisk(blade, 0.0, 0.5, 16, 1);
     glPopMatrix();
     glPopMatrix();
+    
 }
 
 void drawBladeCap() {
+    
     glPushMatrix();
     glRotatef(-90.0, 1.0, 0.0, 0.0);
     glScalef(1.0, 1.0, 1.0);
@@ -462,6 +459,7 @@ void drawBladeCap() {
     gluDisk(cap, 0.0, 0.5, 16, 1);
     glPopMatrix();
     glPopMatrix();
+    
 }
 
 void drawHelicopter(void) {
@@ -469,19 +467,14 @@ void drawHelicopter(void) {
     glRotatef(180, 0.0f, 1.0f, 0.0f);
     
     if (lightingEnabled) {
-    
-    if (headlight) {
         
-        setHeadlight();
+        if (headlight)
+            setHeadlight();
         
-    }
-    
-    else {
-        glDisable(GL_LIGHT1);
-    }
+        else
+            glDisable(GL_LIGHT1);
         
     }
-    
     
     glClearColor(0.49f, 0.75f, 0.93f, 1.0f);
     
@@ -631,7 +624,7 @@ void drawHelicopter(void) {
     gluCylinder(obj, 1, 1, 6, 100, 100);
     glEnd();
     glPopMatrix();
-
+    
     //Missile Launcher Right
     glPushMatrix();
     glTranslatef(-6.0f, -0.25f, -5.0f);
@@ -661,36 +654,50 @@ void drawHelicopter(void) {
     glEnd();
     glPopMatrix();
     
-    
 }
 
 void drawGround(float size, int numSegments) {
+    
     float init = -size / 2.;
     float d = size / numSegments;
     float x = init;
+    
     for (int i = 0; i <= numSegments; ++i) {
+        
         float z = init;
         
         glBegin(GL_TRIANGLE_STRIP);
         glNormal3f(0, 1, 0);
         glColor3f(0.5, 0.5, 0.5);
+        
+        float xd = x+d;
+        
         for (int j = 0; j <= numSegments; ++j) {
+            
             glVertex3f(x, 0.0, z);
-            glVertex3f(x+d, 0.0, z);
+            glVertex3f(xd, 0.0, z);
             z += d;
+            
         }
+        
         glEnd();
         
-        x += d;
+        x = xd;
+        
     }
+    
 }
 
 float lemniscate(float a, float t) {
+    
     return a * cos(t) / (sin(t) * sin(t) + 1);
+    
 }
 
 void drawTrack(float a, int numSegments) {
+    
     const float width = 10.;
+    
     float t = 0.0;
     float dt = 2.0 * PI / numSegments;
     
@@ -703,9 +710,9 @@ void drawTrack(float a, int numSegments) {
     glBegin(GL_TRIANGLE_STRIP);
     glNormal3f(0, 1, 0);
     glColor3f(0.3, 0.3, 0.3);
+    
     // loop and draw
-    for (int i = 0; i <= numSegments; ++i)
-    {
+    for (int i = 0; i <= numSegments; ++i) {
         
         // increment state
         t += dt;
@@ -718,33 +725,33 @@ void drawTrack(float a, int numSegments) {
         
         // normalize dX, dZ
         float factor = 1. / sqrt(dX*dX + dZ*dZ);
-        dX *= factor;
-        dZ *= factor;
         
         // rotate dX, dZ by 90 deg, and apply track width
-        float tX = dX;
-        dX = -dZ * width;
+        float tX = dX * factor;
+        dX = -(dZ*factor) * width;
         dZ = tX * width;
         
         // draw vertices
         glVertex3f(curX-dX, 0.0, curZ-dZ);
         glVertex3f(curX+dX, 0.0, curZ+dZ);
+        
     }
+    
     glEnd();
+    
 }
-
-
 
 void moveHelicopter(void) {
     
     if (moving) {
+        
         ro += speed;
         bladeAngle += 31.f;
+        
     }
     
-    if (ro >= 180) {
+    if (ro >= 180)
         ro = -180;
-    }
     
     float prevX = curX;
     float prevZ = curZ;
@@ -752,22 +759,15 @@ void moveHelicopter(void) {
     curX = (float) 100*((cos(ro*PI/180) / (1 + sin(ro*PI/180)*sin(ro*PI/180))));
     curZ = (float) 100*((cos(ro*PI/180) * (sin(ro*PI/180))) / (1 + sin(ro*PI/180)*sin(ro*PI/180)));
     
-    float dirX = curX - prevX;
-    float dirZ = curZ - prevZ;
-    
-    float magnitude = sqrt(curX*curX + curZ*curZ);
-    
-    dirX = dirX / magnitude;
-    dirZ = dirZ / magnitude;
-    
-    float dot = dirZ*-1.0f;
-    float det = dirX*-1.0f;
-    
     if (moving) {
-        heliRot = atan2f(det, dot);
-    }
         
+        float magnitude = sqrt(curX*curX + curZ*curZ);
+        heliRot = atan2f(((curX - prevX) / magnitude)*-1.0f, ((curZ - prevZ) / magnitude)*-1.0f);
+        
+    }
+    
     glTranslatef(curX,0.0f,curZ);
+    
 }
 
 //method for camera motion
@@ -787,27 +787,26 @@ void moveCamera(void) {
         
         // Reduce theta slightly to obtain another point on the same longitude line on the sphere.
         GLfloat dt=1.0;
-        GLfloat eyeXtemp = r * sin(theta*0.0174532-dt) * sin(phi*0.0174532);
-        GLfloat eyeYtemp = r * cos(theta*0.0174532-dt);
-        GLfloat eyeZtemp = r * sin(theta*0.0174532-dt) * cos(phi*0.0174532);
         
         // Connect these two points to obtain the camera's up vector.
-        upX=eyeXtemp-eyeX;
-        upY=eyeYtemp-eyeY;
-        upZ=eyeZtemp-eyeZ;
+        upX=(r * sin(theta*0.0174532-dt) * sin(phi*0.0174532))-eyeX;
+        upY=(r * cos(theta*0.0174532-dt))-eyeY;
+        upZ=(r * sin(theta*0.0174532-dt) * cos(phi*0.0174532))-eyeZ;
+        
     }
     
-
 }
 
 void restorePerspectiveProjection() {
     
     glMatrixMode(GL_PROJECTION);
+    
     // restore previous projection matrix
     glPopMatrix();
     
     // get back to modelview mode
     glMatrixMode(GL_MODELVIEW);
+    
 }
 
 
@@ -828,6 +827,7 @@ void setOrthographicProjection() {
     
     // switch back to modelview mode
     glMatrixMode(GL_MODELVIEW);
+    
 }
 
 void renderBitmapString(
@@ -838,10 +838,11 @@ void renderBitmapString(
                         char *string) {
     
     char *c;
-    glRasterPos3f(x, y,z);
-    for (c=string; *c != '\0'; c++) {
+    glRasterPos3f(x, y, z);
+    
+    for (c=string; *c != '\0'; ++c)
         glutBitmapCharacter(font, *c);
-    }
+    
 }
 
 void renderScene(void) {
@@ -853,7 +854,6 @@ void renderScene(void) {
     
     // Reset Matrix
     glLoadIdentity();
-    
     
     glScissor(0, 0, (GLsizei) windowWidth, (GLsizei) windowHeight*0.9);
     glEnable(GL_SCISSOR_TEST);
@@ -873,7 +873,7 @@ void renderScene(void) {
     
     // Get Back to the Modelview
     glMatrixMode(GL_MODELVIEW);
-
+    
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     //Decide if wire frame or shaded
@@ -883,7 +883,7 @@ void renderScene(void) {
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     
     glLoadIdentity();
-
+    
     moveCamera();
     
     lx = (sin(heliRot+PI));
@@ -893,19 +893,15 @@ void renderScene(void) {
     float camZ = curZ + lz * 10.0f;
     
     //Set camera
-    if (viewPerson == THIRD) {
+    if (viewPerson == THIRD)
         gluLookAt(eyeX+curX, eyeY, eyeZ+curZ,
                   curX, 0.0f, curZ,
                   upX, upY, upZ);
-    }
-
-    else if (viewPerson == FIRST) {
-        
+    
+    else
         gluLookAt(camX, 1.5f, camZ,
                   camX+lx, 1.5f, camZ+lz,
                   0.0f, 1.0f, 0.0f);
-        
-    }
     
     glEnable(GL_DEPTH_TEST);
     
@@ -922,33 +918,24 @@ void renderScene(void) {
     if (lightingEnabled) {
         
         glEnable(GL_LIGHTING);
-    
-        if (sunlight) {
-
+        
+        if (sunlight)
             setSunlight();
-    
-        }
-    
-        else {
+        
+        else
             glDisable(GL_LIGHT0);
-        }
         
-        
-        if (thirdPersonLight) {
+        if (thirdPersonLight)
             setThirdPersonLight();
-        }
         
-        else {
+        else
             glDisable(GL_LIGHT3);
-        }
-        
         
     }
     
-    else {
+    else
         glDisable(GL_LIGHTING);
-    }
-
+    
     glPushMatrix();
     glTranslatef(0.0f, -10, 0.0f);
     drawGround(250, 100);
@@ -964,18 +951,18 @@ void renderScene(void) {
     glRotatef(heliRot/PI*180, 0.0f, 1.0f, 0.0f);
     drawHelicopter();
     
-    
     if (lightingEnabled) {
-    
+        
         if (circleLight) {
-    moveLight();
-    setCircularLight();
+            
+            moveLight();
+            setCircularLight();
+        
         }
         
-        else {
+        else
             glDisable(GL_LIGHT2);
-        }
-    
+        
     }
     
     glPopMatrix();
@@ -992,7 +979,6 @@ void renderScene(void) {
     glEnable(GL_SCISSOR_TEST);
     glClearDepth(1.0);
     glClearColor(1, 1, 1, 1);
-
     
     // Set the viewport to be the entire window
     glViewport (0, windowHeight*0.9, (GLsizei) windowWidth, (GLsizei) windowHeight*0.1);
@@ -1006,13 +992,16 @@ void renderScene(void) {
     
     glEnable(GL_DEPTH_TEST);
     
-    frame++;
+    ++frame;
     time=glutGet(GLUT_ELAPSED_TIME);
+    
     if (time - timebase > 1000) {
+        
         sprintf(s,"FPS:%4.2f",
                 frame*1000.0/(time-timebase));
         timebase = time;
         frame = 0;
+    
     }
     
     glColor3f(0.0f,0.0f,0.0f);
@@ -1057,32 +1046,29 @@ void resetDefaults(void) {
 //keyboard method
 void keyboard(unsigned char key, int x, int y)
 {
+    
     switch(key) {
         case 'w':
-            polygonMode = WIREFRAME;
-            break;
-        case 'W':
-            polygonMode = SHADED;
+            if (polygonMode == SHADED)
+                polygonMode = WIREFRAME;
+            else
+                polygonMode = SHADED;
             break;
         case 'p':
-            viewMode = PERSPECTIVE;
-            setView(windowWidth, windowHeight);
-            break;
-        case 'o':
-            if (viewPerson == THIRD)
+            if (viewMode == ORTHOGRAPHIC)
+                viewMode = PERSPECTIVE;
+            else if (viewPerson == THIRD)
                 viewMode = ORTHOGRAPHIC;
             setView(windowWidth, windowHeight);
             break;
         case 'z':
-            if (zoom >= 0.05 && viewPerson == THIRD) {
+            if (zoom >= 0.05 && viewPerson == THIRD)
                 zoom -= 0.01f;
-            }
             setView(windowWidth, windowHeight);
             break;
         case 'Z':
-            if (zoom < 1.0f && viewPerson == THIRD) {
+            if (zoom < 1.0f && viewPerson == THIRD)
                 zoom += 0.01f;
-            }
             setView(windowWidth, windowHeight);
             break;
         case 'f':
@@ -1106,16 +1092,14 @@ void keyboard(unsigned char key, int x, int y)
             moving = false;
             break;
         case 'a':
-            if (moving && speed < 1.0f) {
+            if (moving && speed < 1.0f)
                 speed += 0.1f;
-            }
             break;
         case 'A':
             if (moving && speed > 0.1f) {
                 speed -= 0.1f;
-                if (speed < 0.1f) {
+                if (speed < 0.1f)
                     speed = 0.1f;
-                }
             }
             break;
         case '1':
@@ -1132,13 +1116,15 @@ void keyboard(unsigned char key, int x, int y)
             else
                 lightingEnabled = true;
         case 'h':
-            highBeam = true;
-            break;
-        case 'H':
-            highBeam = false;
+            if (lightingEnabled && headlight) {
+                
+                if (highBeam) highBeam = false;
+                else highBeam = true;
+                
+            }
             break;
         case '2':
-            if (lightingEnabled) {
+            if (lightingEnabled && circleLight) {
                 
                 if (circleLightMoving)
                     circleLightMoving = false;
@@ -1153,13 +1139,16 @@ void keyboard(unsigned char key, int x, int y)
     moveCamera();
     
     glutPostRedisplay(); /* this redraws the scene without
-                          waiting for the display callback so that any changes appear 
+                          waiting for the display callback so that any changes appear
                           instantly */
+    
 }
 
 //special keyboard method
 void specialKeyboard(int key, int x, int y) {
+    
     switch(key) {
+            
         case GLUT_KEY_UP:
             if (viewPerson == THIRD)
                 theta -= 4.0f;
@@ -1178,29 +1167,34 @@ void specialKeyboard(int key, int x, int y) {
             break;
         case GLUT_KEY_F1:
             if (lightingEnabled) {
-            if (sunlight)
-                sunlight = false;
-            else
-                sunlight = true;
+                
+                if (sunlight)
+                    sunlight = false;
+                else
+                    sunlight = true;
+                
             }
             break;
         case GLUT_KEY_F2:
             if (lightingEnabled) {
-            if (headlight)
-                headlight = false;
-            else
-                headlight = true;
+                
+                if (headlight)
+                    headlight = false;
+                else
+                    headlight = true;
+                
             }
             break;
         case GLUT_KEY_F3:
             if (lightingEnabled) {
+                
                 if (circleLight)
                     circleLight = false;
                 else
                     circleLight = true;
+                
             }
             break;
-
         case GLUT_KEY_F4:
             if (lightingEnabled) {
                 
@@ -1208,9 +1202,9 @@ void specialKeyboard(int key, int x, int y) {
                     thirdPersonLight = false;
                 else
                     thirdPersonLight = true;
+                
             }
             break;
-            
         case GLUT_KEY_F5:
             if (lightingEnabled) {
                 
@@ -1218,6 +1212,7 @@ void specialKeyboard(int key, int x, int y) {
                     shine = false;
                 else
                     shine = true;
+                
             }
             break;
         default:
@@ -1232,8 +1227,6 @@ void specialKeyboard(int key, int x, int y) {
 
 int main(int argc, char **argv) {
     
-
-    
     // init GLUT and create window
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
@@ -1241,7 +1234,7 @@ int main(int argc, char **argv) {
     glutInitWindowSize(320,320);
     windowWidth=320;
     windowHeight=320;
-    glutCreateWindow("COMP 371 - Assignment 1");
+    glutCreateWindow("COMP 371 - Flying Helicopter Project");
     
     // register callbacks
     glutDisplayFunc(renderScene);
@@ -1255,4 +1248,5 @@ int main(int argc, char **argv) {
     glutMainLoop();
     
     return 1;
+    
 }
